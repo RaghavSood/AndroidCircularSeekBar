@@ -13,7 +13,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -331,9 +330,7 @@ public class CircularSeekBar extends View {
 	public void setAngle(int angle) {
 		this.angle = angle;
 		float donePercent = (((float) this.angle) / 360) * 100;
-		Log.d("MyTAG", "Done: " + donePercent + " ,Angle: " + this.angle);
 		float progress = (donePercent / 100) * getMaxProgress();
-		Log.d("MyTAG", progress + "/" + getMaxProgress());
 		setProgressPercent(Math.round(donePercent));
 		CALLED_FROM_ANGLE = true;
 		setProgress(Math.round(progress));
@@ -541,19 +538,11 @@ public class CircularSeekBar extends View {
 			markPointX = x;
 			markPointY = y;
 
-			float newOriginal = (float) Math.sqrt(Math.pow(startPointX - x, 2) + Math.pow(startPointY - y, 2));
-			float angleNew = (float) (2 * Math.asin(newOriginal / (2 * outerRadius)));
-			if (y < startPointY) {
-				angleNew = 360 - angleNew;
-			}
-
 			float degrees = (float) ((float) ((Math.toDegrees(Math.atan2(x - cx, cy - y)) + 360.0)) % 360.0);
 			// and to make it count 0-360
 			if (degrees < 0) {
 				degrees += 2 * Math.PI;
 			}
-
-			Log.d("ViewClass", "Degrees: " + degrees);
 
 			setAngle(Math.round(degrees));
 			invalidate();
