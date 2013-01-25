@@ -3,6 +3,10 @@ CircularSeekBar
 
 A circular seek bar for Android.
 
+Screenshot:
+
+[Imgur](http://i.imgur.com/kz5NNE1.png)
+
 Sample usage:
 
 ```java
