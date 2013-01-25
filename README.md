@@ -33,3 +33,8 @@ public class Welcome extends Activity {
 	}
 }
 ```
+
+Advanced Usage
+==============
+
+[Advanced Usage Documentation](https://github.com/RaghavSood/AndroidCircularSeekBar/blob/master/USAGE.md#usage)
