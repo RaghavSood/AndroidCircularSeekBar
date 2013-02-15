@@ -1,7 +1,7 @@
 Usage
 =====
 
-To use the CircularSeekBar in your project, you must cop the `CircularSeekBar.java` file into your package, and add the images from the `res` folder to the corresponding folders in your project. You can use your own images as well, but you will need to update the name in the Java code accordingly.
+To use the CircularSeekBar in your project, you must copy the `CircularSeekBar.java` file into your package, and add the images from the `res` folder to the corresponding folders in your project. You can use your own images as well, but you will need to update the name in the Java code accordingly.
 
 Basic usage in pure Java Code:
 
