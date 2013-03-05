@@ -436,10 +436,10 @@ public class CircularSeekBar extends View {
 		if (this.progress != progress) {
 			this.progress = progress;
 			if (!CALLED_FROM_ANGLE) {
-				int newPercent = (this.progress / this.maxProgress) * 100;
-				int newAngle = (newPercent / 100) * 360;
-				this.setAngle(newAngle);
-				this.setProgressPercent(newPercent);
+				float newPercent = ((float) this.progress / (float) this.maxProgress) * 100;
+                int newAngle = (int) ((newPercent / 100) * 360);
+                this.setAngle(newAngle);
+                this.setProgressPercent((int) newPercent);
 			}
 			mListener.onProgressChange(this, this.getProgress());
 			CALLED_FROM_ANGLE = false;
