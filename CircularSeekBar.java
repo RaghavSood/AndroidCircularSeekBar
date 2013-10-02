@@ -113,7 +113,7 @@ public class CircularSeekBar extends View {
 	 * both sides of the progress bar, allowing touch events to be processed
 	 * more user friendlily (yes, I know that's not a word)
 	 */
-	private float adjustmentFactor = 3;
+	private float adjustmentFactor = 100;
 
 	/** The progress mark when the view isn't being progress modified */
 	private Bitmap progressMark;
@@ -535,9 +535,9 @@ public class CircularSeekBar extends View {
 		if (distance < outerRadius + adjustmentFactor && distance > innerRadius - adjustmentFactor && !up) {
 			IS_PRESSED = true;
 
-			markPointX = x;
-			markPointY = y;
-
+			markPointX = (float) (cx + outerRadius * Math.cos(Math.atan2(x - cx, cy - y) - (Math.PI /2)));
+			markPointY = (float) (cy + outerRadius * Math.sin(Math.atan2(x - cx, cy - y) - (Math.PI /2)));
+			
 			float degrees = (float) ((float) ((Math.toDegrees(Math.atan2(x - cx, cy - y)) + 360.0)) % 360.0);
 			// and to make it count 0-360
 			if (degrees < 0) {
