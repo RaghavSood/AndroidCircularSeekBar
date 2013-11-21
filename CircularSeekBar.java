@@ -228,7 +228,8 @@ public class CircularSeekBar extends View {
 		width = getWidth(); // Get View Width
 		height = getHeight();// Get View Height
 
-		int size = (width > height) ? height : width; // Choose the smaller
+		// add some margin so that the thumb is not cut-off
+		int size = ((width > height) ? height : width)-25; // Choose the smaller
 														// between width and
 														// height to make a
 														// square
@@ -277,6 +278,18 @@ public class CircularSeekBar extends View {
 	 *            the canvas
 	 */
 	public void drawMarkerAtProgress(Canvas canvas) {
+		
+		/*Point on a circumference of circle given its angle
+		 * x = cx + r * cos(a)
+		y = cy + r * sin(a)
+		 */
+		//Update the thumb to new position as the progress is updated
+		float avgRadius = (outerRadius+innerRadius)/2;
+		int calcAngle = (angle+startAngle)%360;
+		// 15 some random value I picked up to align the center of movement with the circles
+		dx = (float) ((cx-15) + avgRadius*Math.cos(Math.toRadians(calcAngle)));
+		dy = (float) ((cy-15) + avgRadius*Math.sin(Math.toRadians(calcAngle)));
+		
 		if (IS_PRESSED) {
 			canvas.drawBitmap(progressMarkPressed, dx, dy, null);
 		} else {
@@ -436,11 +449,14 @@ public class CircularSeekBar extends View {
 		if (this.progress != progress) {
 			this.progress = progress;
 			if (!CALLED_FROM_ANGLE) {
-				int newPercent = (this.progress / this.maxProgress) * 100;
-				int newAngle = (newPercent / 100) * 360;
+				//made a minor fix as this is a division of integers
+				// always returned zeros wile percent calculation
+				int newPercent = (this.progress *100)/this.maxProgress;
+				int newAngle = (newPercent* 360)/100;
 				this.setAngle(newAngle);
 				this.setProgressPercent(newPercent);
 			}
+			this.invalidate();
 			mListener.onProgressChange(this, this.getProgress());
 			CALLED_FROM_ANGLE = false;
 		}
