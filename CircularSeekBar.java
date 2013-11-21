@@ -436,8 +436,8 @@ public class CircularSeekBar extends View {
 		if (this.progress != progress) {
 			this.progress = progress;
 			if (!CALLED_FROM_ANGLE) {
-				int newPercent = (this.progress / this.maxProgress) * 100;
-				int newAngle = (newPercent / 100) * 360;
+				int newPercent = ((this.progress*100 )/ this.maxProgress) ;
+				int newAngle = ((newPercent* 360) / 100) ;
 				this.setAngle(newAngle);
 				this.setProgressPercent(newPercent);
 			}
