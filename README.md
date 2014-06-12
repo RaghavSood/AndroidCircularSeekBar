@@ -3,6 +3,18 @@ CircularSeekBar
 
 A circular seek bar for Android.
 
+
+Modification
+---------------------------
+
+__1.__ Modified `setProgress(int progress)` method.
+
+__2.__ Added  `hideSeekBar()` To hide seekbar.
+
+__3.__ Added `ShowSeekBar()` To show seekbar; Bydefault its visible.
+
+<br>
+
 Screenshot:
 
 ![Imgur](http://i.imgur.com/kz5NNE1l.png)
