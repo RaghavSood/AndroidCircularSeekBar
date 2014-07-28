@@ -227,16 +227,16 @@ public class CircularSeekBar extends View {
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-		width = getWidth(); // Get View Width
-		height = getHeight();// Get View Height
+		width = getWidth() -60; // Get View Width
+		height = getHeight() -60;// Get View Height
 
 		int size = (width > height) ? height : width; // Choose the smaller
 		// between width and
 		// height to make a
 		// square
 
-		cx = width / 2; // Center X for circle
-		cy = height / 2; // Center Y for circle
+		cx = width / 2 + 30; // Center X for circle
+		cy = height / 2 + 30; // Center Y for circle
 		outerRadius = size / 2; // Radius of the outer circle
 
 		innerRadius = outerRadius - barWidth; // Radius of the inner circle
